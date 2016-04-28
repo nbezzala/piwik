@@ -65,7 +65,7 @@ class FormDatabaseSetup extends QuickForm2
 
         $this->addElement('text', 'tables_prefix')
             ->setLabel(Piwik::translate('Installation_DatabaseSetupTablePrefix'))
-            ->addRule('checkValidFilename', Piwik::translate('General_NotValid', Piwik::translate('Installation_DatabaseSetupTablePrefix')));
+            ->addRule('checkValidDbname', Piwik::translate('General_NotValid', Piwik::translate('Installation_DatabaseSetupTablePrefix')));
 
         $this->addElement('select', 'adapter')
             ->setLabel(Piwik::translate('Installation_DatabaseSetupAdapter'))

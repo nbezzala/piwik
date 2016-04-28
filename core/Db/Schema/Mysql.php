@@ -33,7 +33,7 @@ class Mysql implements SchemaInterface
         $prefixTables = $this->getTablePrefix();
 
         $tables = array(
-            'user'    => "CREATE TABLE {$prefixTables}user (
+            'user'    => "CREATE TABLE `{$prefixTables}user` (
                           login VARCHAR(100) NOT NULL,
                           password CHAR(32) NOT NULL,
                           alias VARCHAR(45) NOT NULL,
@@ -46,7 +46,7 @@ class Mysql implements SchemaInterface
                           ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'access'  => "CREATE TABLE {$prefixTables}access (
+            'access'  => "CREATE TABLE `{$prefixTables}access` (
                           login VARCHAR(100) NOT NULL,
                           idsite INTEGER UNSIGNED NOT NULL,
                           access VARCHAR(10) NULL,
@@ -54,7 +54,7 @@ class Mysql implements SchemaInterface
                           ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'site'    => "CREATE TABLE {$prefixTables}site (
+            'site'    => "CREATE TABLE `{$prefixTables}site` (
                           idsite INTEGER(10) UNSIGNED NOT NULL AUTO_INCREMENT,
                           name VARCHAR(90) NOT NULL,
                           main_url VARCHAR(255) NOT NULL,
@@ -76,7 +76,7 @@ class Mysql implements SchemaInterface
                             ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'site_setting'    => "CREATE TABLE {$prefixTables}site_setting (
+            'site_setting'    => "CREATE TABLE `{$prefixTables}site_setting` (
                           idsite INTEGER(10) UNSIGNED NOT NULL AUTO_INCREMENT,
                           `setting_name` VARCHAR(255) NOT NULL,
                           `setting_value` LONGTEXT NOT NULL,
@@ -84,7 +84,7 @@ class Mysql implements SchemaInterface
                             ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'site_url'    => "CREATE TABLE {$prefixTables}site_url (
+            'site_url'    => "CREATE TABLE `{$prefixTables}site_url` (
                               idsite INTEGER(10) UNSIGNED NOT NULL,
                               url VARCHAR(255) NOT NULL,
                                 PRIMARY KEY(idsite, url)
@@ -106,7 +106,7 @@ class Mysql implements SchemaInterface
                               ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'logger_message'      => "CREATE TABLE {$prefixTables}logger_message (
+            'logger_message'      => "CREATE TABLE `{$prefixTables}logger_message` (
                                       idlogger_message INTEGER UNSIGNED NOT NULL AUTO_INCREMENT,
                                       tag VARCHAR(50) NULL,
                                       timestamp TIMESTAMP NULL,
@@ -116,7 +116,7 @@ class Mysql implements SchemaInterface
                                       ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'log_action'          => "CREATE TABLE {$prefixTables}log_action (
+            'log_action'          => "CREATE TABLE `{$prefixTables}log_action` (
                                       idaction INTEGER(10) UNSIGNED NOT NULL AUTO_INCREMENT,
                                       name TEXT,
                                       hash INTEGER(10) UNSIGNED NOT NULL,
@@ -127,7 +127,7 @@ class Mysql implements SchemaInterface
                                       ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'log_visit'   => "CREATE TABLE {$prefixTables}log_visit (
+            'log_visit'   => "CREATE TABLE `{$prefixTables}log_visit` (
                               idvisit INTEGER(10) UNSIGNED NOT NULL AUTO_INCREMENT,
                               idsite INTEGER(10) UNSIGNED NOT NULL,
                               idvisitor BINARY(8) NOT NULL,
@@ -180,7 +180,7 @@ class Mysql implements SchemaInterface
                                       ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'log_link_visit_action' => "CREATE TABLE {$prefixTables}log_link_visit_action (
+            'log_link_visit_action' => "CREATE TABLE `{$prefixTables}log_link_visit_action` (
                                         idlink_va INTEGER(11) UNSIGNED NOT NULL AUTO_INCREMENT,
                                         idsite int(10) UNSIGNED NOT NULL,
                                         idvisitor BINARY(8) NOT NULL,
@@ -193,7 +193,7 @@ class Mysql implements SchemaInterface
                                         ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'log_profiling'   => "CREATE TABLE {$prefixTables}log_profiling (
+            'log_profiling'   => "CREATE TABLE `{$prefixTables}log_profiling` (
                                   query TEXT NOT NULL,
                                   count INTEGER UNSIGNED NULL,
                                   sum_time_ms FLOAT NULL,
@@ -210,7 +210,7 @@ class Mysql implements SchemaInterface
                                 ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'session'       => "CREATE TABLE {$prefixTables}session (
+            'session'       => "CREATE TABLE `{$prefixTables}session` (
                                 id VARCHAR( 255 ) NOT NULL,
                                 modified INTEGER,
                                 lifetime INTEGER,
@@ -219,7 +219,7 @@ class Mysql implements SchemaInterface
                                 ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'archive_numeric'     => "CREATE TABLE {$prefixTables}archive_numeric (
+            'archive_numeric'     => "CREATE TABLE `{$prefixTables}archive_numeric` (
                                       idarchive INTEGER UNSIGNED NOT NULL,
                                       name VARCHAR(255) NOT NULL,
                                       idsite INTEGER UNSIGNED NULL,
@@ -234,7 +234,7 @@ class Mysql implements SchemaInterface
                                       ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'archive_blob'        => "CREATE TABLE {$prefixTables}archive_blob (
+            'archive_blob'        => "CREATE TABLE `{$prefixTables}archive_blob` (
                                       idarchive INTEGER UNSIGNED NOT NULL,
                                       name VARCHAR(255) NOT NULL,
                                       idsite INTEGER UNSIGNED NULL,
@@ -248,7 +248,7 @@ class Mysql implements SchemaInterface
                                       ) ENGINE=$engine DEFAULT CHARSET=utf8
             ",
 
-            'sequence'        => "CREATE TABLE {$prefixTables}sequence (
+            'sequence'        => "CREATE TABLE `{$prefixTables}sequence` (
                                       `name` VARCHAR(120) NOT NULL,
                                       `value` BIGINT(20) UNSIGNED NOT NULL ,
                                       PRIMARY KEY(`name`)
