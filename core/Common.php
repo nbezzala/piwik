@@ -62,7 +62,7 @@ class Common
     public static function prefixTable($table)
     {
         $prefix = Config::getInstance()->database['tables_prefix'];
-        return $prefix . $table;
+        return "`" . $prefix . $table . "`";
     }
 
     /**
